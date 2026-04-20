@@ -82,8 +82,8 @@
 :root {
   --bs-body-bg: #071226;
   --bs-body-color: #e6eef8;
-  --bs-link-color: #7fb0ff;
-  --bs-link-hover-color: #a8d8ff;
+  --bs-link-color: #8fb7ff;
+  --bs-link-hover-color: #c7dbff;
   --bs-border-color: rgba(255,255,255,0.06);
   --bs-highlight-bg: rgba(255,255,255,0.03);
   --bs-primary-rgb: 127,176,255;
@@ -93,6 +93,11 @@
 body {
   background-color: var(--bs-body-bg);
   color: var(--bs-body-color);
+}
+
+:root {
+  --site-accent-blue: #8fb7ff;
+  --site-accent-blue-hover: #c7dbff;
 }
 
 /* Replace bright white utility used in header/footer with a dark surface */
@@ -108,12 +113,34 @@ footer .small {
   color: var(--bs-body-color) !important;
 }
 
+.navbar .navbar-brand,
+.navbar .nav-link,
+.intro-faith-line {
+  color: var(--site-accent-blue) !important;
+}
+
+.navbar .nav-link {
+  transition: color 0.25s ease, text-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+  color: var(--site-accent-blue-hover) !important;
+  text-shadow: 0 0 10px rgba(143, 183, 255, 0.45), 0 0 20px rgba(88, 146, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.intro-faith-line {
+  font-weight: 500;
+  text-shadow: 0 0 12px rgba(112, 156, 255, 0.12);
+}
+
 /* Links */
 a {
-  color: var(--bs-link-color);
+  color: var(--site-accent-blue);
 }
 a:hover {
-  color: var(--bs-link-hover-color);
+  color: var(--site-accent-blue-hover);
 }
 
 /* Muted text lighter for dark backgrounds */
@@ -8259,7 +8286,71 @@ textarea.form-control-lg {
 /* rtl:end:remove */
 .text-primary {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
+  color: var(--site-accent-blue) !important;
+}
+
+.link-primary,
+.link-primary:focus,
+.link-primary:hover {
+  color: var(--site-accent-blue) !important;
+}
+
+.resume-page {
+  --resume-accent-blue: #4d70c9;
+  --resume-accent-purple: #b65fcf;
+  --resume-accent-purple-dark: #9f4ec5;
+}
+
+.resume-page .text-primary,
+.resume-page .text-secondary,
+.resume-page h3,
+.resume-page .lead,
+.resume-page .card .d-flex.align-items-center.bg-light.rounded-4.p-3.h-100 {
+  color: var(--resume-accent-blue) !important;
+  -webkit-text-fill-color: currentColor !important;
+  background: none !important;
+  text-shadow: none !important;
+}
+
+.resume-page .resume-section-heading,
+.resume-page .text-gradient {
+  background: linear-gradient(135deg, var(--resume-accent-blue) 0%, var(--resume-accent-purple) 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  text-shadow: none !important;
+}
+
+.resume-page .card .text-primary,
+.resume-page .card .text-secondary,
+.resume-page .card .small.text-muted,
+.resume-page .card .fst-italic .small.text-muted {
+  color: var(--resume-accent-blue) !important;
+  opacity: 1 !important;
+}
+
+.resume-page .resume-card-title,
+.resume-page .resume-card-description {
+  font-weight: 700 !important;
+  color: var(--resume-accent-blue) !important;
+}
+
+.resume-page .card .bg-light {
+  border: 1px solid rgba(77, 112, 201, 0.18);
+}
+
+.resume-page .education-card .text-secondary,
+.resume-page .education-card .resume-card-title,
+.resume-page .education-card .resume-card-description,
+.resume-page .education-card .small.text-muted,
+.resume-page .education-card .fst-italic .small.text-muted {
+  color: var(--resume-accent-purple-dark) !important;
+}
+
+.resume-page .education-card .bg-light {
+  border: 1px solid rgba(182, 95, 207, 0.22);
+  box-shadow: inset 0 0 0 1px rgba(182, 95, 207, 0.06);
 }
 
 .text-secondary {
@@ -11663,15 +11754,15 @@ html {
 }
 .profile {
   position: relative;
-  height: 75vw;
-  width: 75vw;
-  border-radius: 5vw;
-  margin-top: 5vw;
-  max-height: 40rem;
-  max-width: 40rem;
+  height: 82vw;
+  width: min(78vw, 34rem);
+  border-radius: 2.75rem;
+  margin-top: 3rem;
+  max-height: 46rem;
+  max-width: 34rem;
   overflow: hidden;
-  box-shadow: 0 12px 30px rgba(var(--bs-primary-rgb), 0.10), 0 6px 16px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 22px 55px rgba(var(--bs-primary-rgb), 0.16), 0 18px 36px rgba(15, 23, 42, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.38);
 }
 .profile .profile-img {
   position: absolute;
@@ -11679,14 +11770,34 @@ html {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 18%;
   display: block;
   border-radius: inherit;
   transition: transform .45s cubic-bezier(.2,.8,.2,1), filter .3s ease;
   will-change: transform;
+  filter: saturate(1.02) contrast(1.01);
 }
 .profile .profile-img:hover {
   transform: scale(1.03);
   filter: saturate(1.06);
+}
+.profile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0) 22%, rgba(15, 23, 42, 0.08) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+.profile > *:not(.profile-img):not(.dots-1):not(.dots-2):not(.dots-3):not(.dots-4) {
+  position: relative;
+  z-index: 2;
+}
+.profile .dots-1,
+.profile .dots-2,
+.profile .dots-3,
+.profile .dots-4 {
+  z-index: 2;
 }
 .profile .dots-1 {
   position: absolute;
@@ -11727,8 +11838,8 @@ html {
 
 @media (min-width: 576px) {
   .profile {
-    height: 60vw;
-    width: 60vw;
+    height: 72vw;
+    width: min(64vw, 34rem);
   }
   .profile .profile-img {
     /* full-bleed image fills container via base rules */
@@ -11752,8 +11863,8 @@ html {
 }
 @media (min-width: 768px) {
   .profile {
-    height: 50vw;
-    width: 50vw;
+    height: 58vw;
+    width: min(48vw, 33rem);
   }
   .profile .profile-img {
     /* full-bleed image fills container via base rules */
@@ -11777,11 +11888,12 @@ html {
 }
 @media (min-width: 992px) {
   .profile {
-    height: 40vw;
-    width: 40vw;
+    height: 43rem;
+    width: min(100%, 33rem);
+    margin-top: 2rem;
   }
   .profile .profile-img {
-    /* full-bleed image fills container via base rules */
+    object-position: center 16%;
   }
   .profile .dots-1 {
     width: 1.5vw;
@@ -11802,11 +11914,11 @@ html {
 }
 @media (min-width: 1200px) {
   .profile {
-    height: 35vw;
-    width: 35vw;
+    height: 44rem;
+    width: min(100%, 34rem);
   }
   .profile .profile-img {
-    /* full-bleed image fills container via base rules */
+    object-position: center 15%;
   }
   .profile .dots-1 {
     width: 1.5vw;
