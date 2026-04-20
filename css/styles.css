@@ -147,7 +147,7 @@ a:hover {
 .text-muted,
 .small,
 .figure-caption {
-  color: rgba(230,238,248,0.72) !important;
+  color: rgba(100, 159, 231, 0.72) !important;
 }
 
 /* Thinner, subtle borders on dark background */
